@@ -1,0 +1,274 @@
+[gd_scene load_steps=10 format=3 uid="uid://c2yfhtmnb5gho"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_avw3i"]
+[ext_resource type="Texture2D" uid="uid://dg7b4gngqxpjt" path="res://�.jpg" id="2_ujqku"]
+[ext_resource type="Texture2D" uid="uid://dg8ucpcou0s2p" path="res://result_2e64f4fdc9c381402859c7ba32d00eb3-edited-fre-no-bg-preview (carve.photos).png" id="3_8ej68"]
+[ext_resource type="Texture2D" uid="uid://djc80gik8w8q4" path="res://5b968cb45b1c91784cf956803f79c7eb.png" id="4_f736v"]
+[ext_resource type="Texture2D" uid="uid://br8dpqogcwebc" path="res://8c1fdd450acfae0539a04403f7e35b60.png" id="5_4cljj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5xx47"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uvbbs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0rwlg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aj7vu"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_avw3i")
+
+[node name="World" type="Node" parent="."]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="А" type="Sprite2D" parent="Control"]
+position = Vector2(575, 318)
+scale = Vector2(1.58791, 1.56098)
+texture = ExtResource("2_ujqku")
+
+[node name="button_join" type="Sprite2D" parent="Control"]
+position = Vector2(825, 508)
+scale = Vector2(0.851667, 0.63)
+texture = ExtResource("3_8ej68")
+
+[node name="text_join" type="Sprite2D" parent="Control"]
+position = Vector2(823, 506)
+scale = Vector2(2.8, 2.08333)
+texture = ExtResource("4_f736v")
+
+[node name="button_host" type="Sprite2D" parent="Control"]
+position = Vector2(303, 507.25)
+scale = Vector2(0.985, 0.64125)
+texture = ExtResource("3_8ej68")
+
+[node name="text_host" type="Sprite2D" parent="Control"]
+position = Vector2(301.75, 508)
+scale = Vector2(1.16849, 2.16667)
+texture = ExtResource("5_4cljj")
+
+[node name="button_username" type="Sprite2D" parent="Control"]
+position = Vector2(557, 125)
+scale = Vector2(0.6625, 0.535)
+texture = ExtResource("3_8ej68")
+
+[node name="LineEdit" type="LineEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 13.9
+anchor_top = 3.05
+anchor_right = 13.9
+anchor_bottom = 3.05
+offset_left = -155.0
+offset_top = -39.0
+offset_right = 148.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 46
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5xx47")
+placeholder_text = "          ник"
+
+[node name="createhostBtn" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 7.612
+anchor_top = 12.75
+anchor_right = 7.612
+anchor_bottom = 12.75
+offset_left = -268.48
+offset_top = -77.0
+offset_right = 268.52
+offset_bottom = 77.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uvbbs")
+text = "
+"
+
+[node name="joinHostBtn" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 20.8
+anchor_top = 12.75
+anchor_right = 20.8
+anchor_bottom = 12.75
+offset_left = -232.0
+offset_top = -74.0
+offset_right = 232.0
+offset_bottom = 74.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0rwlg")
+text = "
+
+"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://character_body_2d.tscn")
+spawn_path = NodePath("../Players")
+
+[node name="Players" type="Node2D" parent="."]
+position = Vector2(580, 350)
+
+[node name="Game_ui" type="CanvasLayer" parent="."]
+
+[node name="ChatBtn" type="Button" parent="Game_ui"]
+visible = false
+offset_left = -6.0
+offset_top = 10.0
+offset_right = 152.0
+offset_bottom = 73.0
+theme_override_font_sizes/font_size = 40
+text = "чат"
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="Game_ui"]
+visible = false
+anchors_preset = -1
+anchor_left = 0.834618
+anchor_top = 0.407457
+anchor_right = 0.834618
+anchor_bottom = 0.407457
+offset_left = -969.48
+offset_top = -264.032
+offset_right = 176.52
+offset_bottom = -184.032
+metadata/_edit_use_anchors_ = true
+
+[node name="TextEdit" type="TextEdit" parent="Game_ui/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 4.03139
+anchor_right = 0.5
+anchor_bottom = 4.03139
+offset_left = -578.198
+offset_top = -241.48
+offset_right = 569.0
+offset_bottom = 241.52
+theme_override_colors/background_color = Color(1, 1, 1, 0.12549)
+theme_override_colors/font_readonly_color = Color(1, 1, 1, 1)
+editable = false
+metadata/_edit_use_anchors_ = true
+
+[node name="LineEdit" type="LineEdit" parent="Game_ui/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.500014
+anchor_top = 7.46785
+anchor_right = 0.500014
+anchor_bottom = 7.51848
+offset_left = -580.042
+offset_top = -34.96
+offset_right = 343.984
+offset_bottom = 35.04
+metadata/_edit_use_anchors_ = true
+
+[node name="SendBtn" type="Button" parent="Game_ui/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.896369
+anchor_top = 7.49317
+anchor_right = 0.90077
+anchor_bottom = 7.51848
+offset_left = -113.275
+offset_top = -35.96
+offset_right = 113.725
+offset_bottom = 36.04
+theme_override_font_sizes/font_size = 38
+text = "отправить"
+metadata/_edit_use_anchors_ = true
+
+[node name="BackBtn" type="Button" parent="Game_ui/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.960863
+anchor_top = 0.455696
+anchor_right = 0.96349
+anchor_bottom = 0.468354
+offset_left = -40.306
+offset_top = -35.0
+offset_right = 39.694
+offset_bottom = 42.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_aj7vu")
+text = "x"
+metadata/_edit_use_anchors_ = true
+
+[node name="eror_empty_username" type="Panel" parent="Game_ui"]
+visible = false
+offset_left = -13.0
+offset_top = -4.0
+offset_right = 1107.0
+offset_bottom = 635.0
+
+[node name="backpanelBtn" type="Button" parent="Game_ui/eror_empty_username"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.489
+anchor_top = 0.578
+anchor_right = 0.489
+anchor_bottom = 0.578
+offset_left = -177.68
+offset_top = -51.342
+offset_right = 178.32
+offset_bottom = 51.658
+theme_override_font_sizes/font_size = 50
+text = "отмена"
+
+[node name="Label" type="Label" parent="Game_ui/eror_empty_username"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.519
+anchor_top = 0.223
+anchor_right = 0.519
+anchor_bottom = 0.223
+offset_left = -406.28
+offset_top = -40.497
+offset_right = 406.72
+offset_bottom = 40.503
+theme_override_font_sizes/font_size = 50
+text = "!пожалуйста введите username!"
+
+[node name="eror_username" type="Panel" parent="Game_ui"]
+visible = false
+offset_left = -26.0
+offset_top = -8.0
+offset_right = 1094.0
+offset_bottom = 631.0
+
+[node name="Label" type="Label" parent="Game_ui/eror_username"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.546
+anchor_top = 0.248
+anchor_right = 0.546
+anchor_bottom = 0.248
+offset_left = -392.52
+offset_top = -70.472
+offset_right = 391.48
+offset_bottom = 70.528
+theme_override_font_sizes/font_size = 50
+text = "пожалуйста введите свой
+ ник неменьше пяти символов"
+
+[node name="backpanel3Btn" type="Button" parent="Game_ui/eror_username"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.526
+anchor_top = 0.637
+anchor_right = 0.526
+anchor_bottom = 0.637
+offset_left = -163.12
+offset_top = -41.043
+offset_right = 162.88
+offset_bottom = 40.957
+theme_override_font_sizes/font_size = 50
+text = "отмена"
+
+[connection signal="pressed" from="Control/createhostBtn" to="." method="_on_createhost_btn_pressed"]
+[connection signal="pressed" from="Control/joinHostBtn" to="." method="_on_join_host_btn_pressed"]
+[connection signal="pressed" from="Game_ui/ChatBtn" to="." method="_on_chat_btn_pressed"]
+[connection signal="pressed" from="Game_ui/Panel/SendBtn" to="." method="_on_send_btn_pressed"]
+[connection signal="pressed" from="Game_ui/Panel/BackBtn" to="." method="_on_back_btn_pressed"]
+[connection signal="pressed" from="Game_ui/eror_empty_username/backpanelBtn" to="." method="_on_backpanel_btn_pressed"]
+[connection signal="pressed" from="Game_ui/eror_username/backpanel3Btn" to="." method="_on_backpanel_3_btn_pressed"]

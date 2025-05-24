@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2yfhtmnb5gho"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_avw3i"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_avw3i")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="createhostBtn" type="Button" parent="Control"]
+offset_left = 37.0
+offset_top = 405.0
+offset_right = 550.0
+offset_bottom = 559.0
+text = "Create host
+"
+
+[node name="joinHostBtn" type="Button" parent="Control"]
+offset_left = 611.0
+offset_top = 405.0
+offset_right = 1124.0
+offset_bottom = 559.0
+text = "join
+"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://character_body_2d.tscn")
+spawn_path = NodePath("../Players")
+
+[node name="Players" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Control/createhostBtn" to="." method="_on_createhost_btn_pressed"]
+[connection signal="pressed" from="Control/joinHostBtn" to="." method="_on_join_host_btn_pressed"]
