@@ -26,7 +26,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="А" type="Sprite2D" parent="Control"]
-position = Vector2(575, 318)
+position = Vector2(567, 321)
 scale = Vector2(1.58791, 1.56098)
 texture = ExtResource("2_ujqku")
 

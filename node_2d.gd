@@ -25,7 +25,7 @@ func _on_createhost_btn_pressed() -> void:
 		add_player(1)
 		var scene
 		if FileAccess.file_exists("user://world.tscn"):
-			scene = ResourceLoader.load("user://world.tscn").instantitate()
+			scene = ResourceLoader.load("user://world.tscn").instantiate()
 		else:
 			scene = preload("res://world.tscn").instantiate()
 		$World.add_child(scene)
