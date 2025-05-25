@@ -1,28 +1,29 @@
-[gd_scene load_steps=7 format=3 uid="uid://dv77wb8x1oewu"]
+[gd_scene load_steps=6 format=3 uid="uid://dv77wb8x1oewu"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_7mc5c"]
-[ext_resource type="Texture2D" uid="uid://bf58dhbg6juwn" path="res://i.webp" id="2_hhpmk"]
+[ext_resource type="TileSet" uid="uid://6bb6xhc1xbvp" path="res://new_tile_set.tres" id="2_nep73"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jr2jo"]
-texture = ExtResource("2_hhpmk")
-5:2/0 = 0
+[sub_resource type="Gradient" id="Gradient_7uib0"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.246753, 0.844156)
+colors = PackedColorArray(0, 0, 1, 1, 0, 1, 0, 1, 0.294118, 0.176471, 0, 1)
 
-[sub_resource type="TileSet" id="TileSet_7vhws"]
-sources/0 = SubResource("TileSetAtlasSource_jr2jo")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ohgjg"]
 
-[sub_resource type="TileSet" id="TileSet_c8koh"]
-
-[sub_resource type="TileSet" id="TileSet_t11ij"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cfn5c"]
+color_ramp = SubResource("Gradient_7uib0")
+noise = SubResource("FastNoiseLite_ohgjg")
 
 [node name="World" type="Node2D"]
 z_index = -1
 script = ExtResource("1_7mc5c")
+noise_height_texct = SubResource("NoiseTexture2D_cfn5c")
 
-[node name="watrer" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_7vhws")
+[node name="water" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_nep73")
 
 [node name="terrian" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_c8koh")
+tile_set = ExtResource("2_nep73")
 
 [node name="plants" type="TileMapLayer" parent="."]
-tile_set = SubResource("TileSet_t11ij")
+tile_set = ExtResource("2_nep73")
