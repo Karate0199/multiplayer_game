@@ -1,39 +1,32 @@
 [gd_scene load_steps=8 format=3 uid="uid://dv77wb8x1oewu"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_7mc5c"]
-[ext_resource type="TileSet" uid="uid://6bb6xhc1xbvp" path="res://new_tile_set.tres" id="2_nep73"]
+[ext_resource type="TileSet" uid="uid://f51hv52lxqx2" path="res://new_tile_set2.tres" id="2_ctqey"]
 
-[sub_resource type="Gradient" id="Gradient_e6sar"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0.00649351, 0.012987, 0.811688)
-colors = PackedColorArray(0, 0, 1, 1, 0, 1, 0, 1, 0.294118, 0.176471, 0, 1)
+[sub_resource type="Gradient" id="Gradient_cc0hp"]
+offsets = PackedFloat32Array(0, 0.357143, 0.480519)
+colors = PackedColorArray(0, 0, 1, 1, 0, 1, 0, 1, 0, 0.345098, 0.745098, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_q824a"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aj2bu"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yvuni"]
-color_ramp = SubResource("Gradient_e6sar")
-noise = SubResource("FastNoiseLite_q824a")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x7t6k"]
+color_ramp = SubResource("Gradient_cc0hp")
+noise = SubResource("FastNoiseLite_aj2bu")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_x7iuf"]
-frequency = 0.0275
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h2pjy"]
+seed = 50
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_da6jx"]
-noise = SubResource("FastNoiseLite_x7iuf")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2mvty"]
+noise = SubResource("FastNoiseLite_h2pjy")
 
 [node name="World" type="Node2D"]
 z_index = -1
 script = ExtResource("1_7mc5c")
-noise_height_text = SubResource("NoiseTexture2D_yvuni")
-noise_tree_text = SubResource("NoiseTexture2D_da6jx")
+noise_height_text = SubResource("NoiseTexture2D_x7t6k")
+noise_tree_texct = SubResource("NoiseTexture2D_2mvty")
 
 [node name="water" type="TileMapLayer" parent="."]
-tile_set = ExtResource("2_nep73")
+tile_set = ExtResource("2_ctqey")
 
-[node name="terrian" type="TileMapLayer" parent="."]
-tile_set = ExtResource("2_nep73")
-
-[node name="grass" type="TileMapLayer" parent="."]
-tile_set = ExtResource("2_nep73")
-
-[node name="plants" type="TileMapLayer" parent="."]
-tile_set = ExtResource("2_nep73")
+[node name="terrain" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_ctqey")
