@@ -1,6 +1,6 @@
 extends Area2D
 
-@export var tupe = "tree"
+@export var tupe = "godot"
 @onready var tile_map :TileMapLayer = get_parent()
 
 

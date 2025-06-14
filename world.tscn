@@ -1,32 +1,69 @@
-[gd_scene load_steps=8 format=3 uid="uid://dv77wb8x1oewu"]
+[gd_scene load_steps=14 format=3 uid="uid://dv77wb8x1oewu"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_7mc5c"]
-[ext_resource type="TileSet" uid="uid://f51hv52lxqx2" path="res://new_tile_set2.tres" id="2_ctqey"]
+[ext_resource type="TileSet" uid="uid://6bb6xhc1xbvp" path="res://new_tile_set.tres" id="2_nep73"]
+[ext_resource type="Texture2D" uid="uid://bf58dhbg6juwn" path="res://i.webp" id="3_yyv3v"]
+[ext_resource type="PackedScene" uid="uid://dgf1onqvuo0jc" path="res://area_2d.tscn" id="4_4kago"]
 
-[sub_resource type="Gradient" id="Gradient_cc0hp"]
-offsets = PackedFloat32Array(0, 0.357143, 0.480519)
-colors = PackedColorArray(0, 0, 1, 1, 0, 1, 0, 1, 0, 0.345098, 0.745098, 1)
+[sub_resource type="Gradient" id="Gradient_3ghbu"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.337662, 0.344156, 0.681818)
+colors = PackedColorArray(0, 0, 1, 1, 0.337662, 0.337662, 1, 1, 0, 1, 0, 1, 0.294118, 0.176471, 0, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_aj2bu"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_viqs1"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x7t6k"]
-color_ramp = SubResource("Gradient_cc0hp")
-noise = SubResource("FastNoiseLite_aj2bu")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ko2l6"]
+color_ramp = SubResource("Gradient_3ghbu")
+noise = SubResource("FastNoiseLite_viqs1")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_h2pjy"]
-seed = 50
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vp24s"]
+frequency = 0.2776
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2mvty"]
-noise = SubResource("FastNoiseLite_h2pjy")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_er6ox"]
+noise = SubResource("FastNoiseLite_vp24s")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bnwjv"]
+texture = ExtResource("3_yyv3v")
+18:2/0 = 0
+18:2/0/terrain_set = 0
+18:2/0/terrain = 0
+18:2/0/terrains_peering_bit/bottom_side = 0
+18:2/0/terrains_peering_bit/left_side = 0
+18:2/0/terrains_peering_bit/top_left_corner = 0
+18:2/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSet" id="TileSet_4glug"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetAtlasSource_bnwjv")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cvwd7"]
+scenes/1/scene = ExtResource("4_4kago")
+
+[sub_resource type="TileSet" id="TileSet_infbs"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "Terrain 0"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+sources/0 = SubResource("TileSetScenesCollectionSource_cvwd7")
 
 [node name="World" type="Node2D"]
 z_index = -1
 script = ExtResource("1_7mc5c")
-noise_height_text = SubResource("NoiseTexture2D_x7t6k")
-noise_tree_texct = SubResource("NoiseTexture2D_2mvty")
+noise_height_text = SubResource("NoiseTexture2D_ko2l6")
+noise_tree_texct = SubResource("NoiseTexture2D_er6ox")
 
 [node name="water" type="TileMapLayer" parent="."]
-tile_set = ExtResource("2_ctqey")
+tile_set = ExtResource("2_nep73")
 
-[node name="terrain" type="TileMapLayer" parent="."]
-tile_set = ExtResource("2_ctqey")
+[node name="terrian" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_nep73")
+
+[node name="grass" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_4glug")
+
+[node name="plants" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_nep73")
+
+[node name="area2d" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_infbs")
